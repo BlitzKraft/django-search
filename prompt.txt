@@ -1,0 +1,41 @@
+Your technicalinterview for the Senior Web Developer position at stackfolio
+starts now!
+
+You have 5 hours to code a solution to this prompt, host it somewhere, and send
+us the link by 8pm EST!
+
+Prompt:
+Make a web app that starts as just a search bar (and maybe some web app
+branding). When someone types in a query and submits it you should hit the Yelp
+api and get some results. Take these results and display them in some
+interesting way. You must show the actual businesses that are returned by the
+query, but also show some additional information in some interesting way. One
+example is to show summary statistics. Do not simply recreate Yelp. Yelp
+provides a lot of interesting information and media (pictures/video). Be
+creative!
+
+Notes: This prompt is very vague and open ended by design. Think about it. You
+   are the owner and designer of this product from front to back.
+
+ * It doesn't have to be useful. It just has to be interesting.
+ * You own the UI/UX. Don't email and ask specifics on the features or how
+   the web app should operate.
+ * The Yelp API can be found at:
+   https://www.yelp.com/developers/documentation/v3/get_started
+ * The Yelp API does require usage of OAuth. I understand that if you've
+   never used it before, 4 hours isn't enough to understand OAuth. In this case,
+   simply build a scraper for Yelp's main website.
+ * However, there are lots of packages out there to deal with OAuth really
+   easily.
+ * Caching the results for faster load time gets bonus points. (What are
+   points? Good question.)
+ * You must deploy and host the solution somewhere. DO NOT deploy last
+   minute. Leave some time for you to deploy! This is the downfall of many a
+   developer.
+ * Email back the link to the solution when you're done. Also zip up all
+   of your code and send it as an attachment.
+ * You may use an html template if you want. If you do, send us the raw
+   template as well.
+ * If you have any questions during the interviewemailpav@stackfolio.comor call
+   Pav at 301-613-2697.
+
