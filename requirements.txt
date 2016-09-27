@@ -19,3 +19,4 @@ dj-database-url==0.2.1
 
 # Per-app requirements go here
 yelp==1.0.2
+django-bootstrap3==7.1.0
