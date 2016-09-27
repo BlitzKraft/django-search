@@ -1,0 +1,18 @@
+# Django
+Django==1.5.1
+South==0.7.6
+psycopg2==2.4.6
+distribute==0.6.35
+wsgiref==0.1.2
+pytz==2013b
+
+# Templates
+Jinja2==2.6
+jingo==0.6.1
+git+https://github.com/auzigog/jinja-bootstrap.git@v0.3.0#egg=bootstrap
+
+# Heroku
+gunicorn==0.17.2
+dj-database-url==0.2.1
+
+# Per-app requirements go here
