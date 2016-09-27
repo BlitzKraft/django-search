@@ -6,6 +6,7 @@ distribute==0.6.35
 wsgiref==0.1.2
 pytz==2013b
 setuptools==27.3.0
+dj-static==0.0.6
 
 # Templates
 Jinja2==2.6
