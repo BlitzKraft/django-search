@@ -1,7 +1,13 @@
 from django.http import HttpResponse, HttpResponseRedirect
+from django.template.defaulttags import csrf_token
 from django.template import loader
 from django.shortcuts import render
 from django import forms
+from yelp.client import Client
+from yelp.oauth1_authenticator import Oauth1Authenticator
+import io
+import json
+
 import os
 
 CURR_PATH = os.path.abspath('./')
@@ -20,10 +26,31 @@ def index(request):
 
 def search_res(in_text):
     form = searchForm()
-    result = in_text
+    result = search_yelp(in_text.POST['title'])
     template = loader.get_template(os.path.join(CURR_PATH, 'search/templates/search/index.html'))
     context = { 'form' : form,
                 'res' : result,
                }
 
     return HttpResponse(template.render(context))
+
+
+def search_yelp(input):
+    out = []
+    with io.open('config_secret.json') as cred:
+        creds = json.load(cred)
+        auth = Oauth1Authenticator(**creds)
+        client = Client(auth)
+
+    params = {
+        'term' : 'food'
+    }
+
+    client = Client(auth)
+    response = client.search('San Francisco', **params)
+
+
+    for a in response.businesses:
+        out.append(a.name)
+    return out
+

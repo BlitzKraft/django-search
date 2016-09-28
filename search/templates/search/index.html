@@ -23,9 +23,11 @@
 		{% bootstrap_icon "star" %} Search
 		</button>
 		{% endbuttons %}
+                {% for name in res %}
 		<div class="col-md-4">
-			{{ res }}
+			{{ name }}
 		</div>
+                {% endfor %}
 	</div>
 </form>
 </body>
