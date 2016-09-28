@@ -54,7 +54,7 @@ def search_yelp(input):
     response = client.search('Atlanta', **params)
 
     for a in response.businesses:
-        out.append([a.name, a.image_url])
+        out.append([a.name, a.image_url.replace("ms.jpg", "l.jpg"), a.url ])
     if (len(out) == 0):
         out.append('No results found')
     return out
