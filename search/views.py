@@ -11,7 +11,7 @@ import json
 import os
 
 CURR_PATH = os.path.abspath('./')
-result = 'test'
+result = ''
 
 class searchForm(forms.Form):
     title = forms.CharField(label = '')
@@ -32,7 +32,7 @@ def search_res(in_text):
                 'res' : result,
                }
 
-    return HttpResponse(template.render(context))
+    return HttpResponse(template.render(context, in_text))
 
 
 def search_yelp(input):
@@ -43,14 +43,16 @@ def search_yelp(input):
         client = Client(auth)
 
     params = {
-        'term' : 'food'
+        'term' : input
     }
 
     client = Client(auth)
-    response = client.search('San Francisco', **params)
+    response = client.search('Atlanta', **params)
 
 
     for a in response.businesses:
         out.append(a.name)
+    if (len(out) == 0):
+        out.append('No results found')
     return out
 
