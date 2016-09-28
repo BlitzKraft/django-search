@@ -5,17 +5,18 @@
 	<link rel="stylesheet" href="http://code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" type="text/css" media="all" />
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript">
 	</script> <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js" type="text/javascript"></script>
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd" crossorigin="anonymous">
 	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 	<meta charset="UTF-8">
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/masonry/4.1.1/masonry.pkgd.min.js"></script>
 	<title>BK Bolisetty - Test for stackfolio</title>
 </head>
 <body>
 	<div class="container">
 	<h2>Search yelp</h2>
 
-	<form action="/results/" method="post" class="form">
+	<form action="/results/" method="post" name="search_query" class="form">
 		{% csrf_token %}
 		{% bootstrap_form form %}
 		{% buttons %}
@@ -23,12 +24,25 @@
 		{% bootstrap_icon "star" %} Search
 		</button>
 		{% endbuttons %}
-                {% for name in res %}
-		<div class="col-md-4">
-			{{ name }}
-		</div>
-                {% endfor %}
+                <div class="grid">
+                    {% for name, url in res %}
+                    <div class="grid-item card col-md-4">
+			    <img class="card-img-top" src="{{ url }}" alt="Card image" />
+			    <div class="card-block">
+				<h4>{{ name }}</h4>
+				<p class="card-text"></p>
+			    </div>
+                    </div>
+                    {% endfor %}
+                </div>
+        </form>
 	</div>
-</form>
 </body>
 </html>
+
+<script>
+    $('.grid').masonry({
+	itemSelector: '.grid-item',
+	columnWidth: 200 });
+
+</script>

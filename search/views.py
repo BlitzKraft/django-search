@@ -5,6 +5,7 @@ from django.shortcuts import render
 from django import forms
 from yelp.client import Client
 from yelp.oauth1_authenticator import Oauth1Authenticator
+import geoip2.webservice
 import io
 import json
 
@@ -14,7 +15,7 @@ CURR_PATH = os.path.abspath('./')
 result = ''
 
 class searchForm(forms.Form):
-    title = forms.CharField(label = '')
+    search_query = forms.CharField(label = '')
 
 def index(request):
     form = searchForm()
@@ -25,15 +26,18 @@ def index(request):
     return HttpResponse(template.render(context, request))
 
 def search_res(in_text):
-    form = searchForm()
-    result = search_yelp(in_text.POST['title'])
+    query = in_text.POST['search_query']
+    if(query== ''):
+        return HttpResponse(template.render(context, request))
+    result = search_yelp(query)
+    form = searchForm(initial={'search_query': query })
     template = loader.get_template(os.path.join(CURR_PATH, 'search/templates/search/index.html'))
-    context = { 'form' : form,
+    context = { 
+                'form' : form,
                 'res' : result,
                }
 
     return HttpResponse(template.render(context, in_text))
-
 
 def search_yelp(input):
     out = []
@@ -49,10 +53,16 @@ def search_yelp(input):
     client = Client(auth)
     response = client.search('Atlanta', **params)
 
-
     for a in response.businesses:
-        out.append(a.name)
+        out.append([a.name, a.image_url])
     if (len(out) == 0):
         out.append('No results found')
     return out
 
+def get_client_ip(request):
+    x_forwarded_for = request.META.get('HTTP_X_FORWARDED_FOR')
+    if x_forwarded_for:
+        ip = x_forwarded_for.split(',')[0]
+    else:
+        ip = request.META.get('REMOTE_ADDR')
+    return ip
