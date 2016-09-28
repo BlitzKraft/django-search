@@ -58,17 +58,20 @@ $(window).on('load', function() {
 		{% bootstrap_form form %}
 		{% buttons %}
 		<button type="submit" class="btn btn-primary">
-		{% bootstrap_icon "star" %} Search
+		🔎 Search
 		</button>
 		{% endbuttons %}
         </form>
             <div class="grid">
-                {% for name, url, link in res %}
+                {% for name, url, link, rating, phone, nav in res %}
                 <div class="grid-sizer"></div>
                 <div class="grid-item card">
                         <img class="card-img-top" src="{{ url }}" alt="{{ name }}" />
                         <div class="card-block">
                             <a href="{{ link }}"><strong>{{ name }}</strong></a>
+                            {{ rating }} ★ 
+                            <a href="tel:{{ phone }}">📞</a>
+			    <a href="http://www.google.com/maps/dir//{{ nav }}">↱</a>
                         </div>
                 </div>
                 {% endfor %}

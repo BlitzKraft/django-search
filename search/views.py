@@ -55,7 +55,14 @@ def search_yelp(input):
     for a in response.businesses:
         if a.image_url is None:
             a.image_url = 'http://http.cat/404.jpg'
-        out.append([a.name, a.image_url.replace("ms.jpg", "l.jpg"), a.url ])
+
+        try:
+            nav_link = ','.join([str(a.location.coordinate.latitude), str(a.location.coordinate.longitude)])
+        except AttributeError:
+            # print json.dumps(a, default=lambda o: o.__dict__, indent=2)
+            nav_link = ''
+
+        out.append([a.name, a.image_url.replace("ms.jpg", "l.jpg"), a.url, a.rating, a.phone, nav_link])
     if (len(out) == 0):
         out.append('No results found')
     return out
