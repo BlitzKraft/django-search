@@ -8,11 +8,6 @@ pytz==2013b
 setuptools==27.3.0
 dj-static==0.0.6
 
-# Templates
-Jinja2==2.6
-jingo==0.6.1
-git+https://github.com/auzigog/jinja-bootstrap.git@v0.3.0#egg=bootstrap
-
 # Heroku
 gunicorn==0.17.2
 dj-database-url==0.2.1
@@ -20,3 +15,5 @@ dj-database-url==0.2.1
 # Per-app requirements go here
 yelp==1.0.2
 django-bootstrap3==7.1.0
+python-geoip==1.2
+python-geoip-geolite2==2015.303
