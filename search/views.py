@@ -5,7 +5,6 @@ from django.shortcuts import render
 from django import forms
 from yelp.client import Client
 from yelp.oauth1_authenticator import Oauth1Authenticator
-import geoip2.webservice
 import io
 import json
 
