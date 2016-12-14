@@ -1,9 +1,3 @@
-Your technicalinterview for the Senior Web Developer position at stackfolio
-starts now!
-
-You have 5 hours to code a solution to this prompt, host it somewhere, and send
-us the link by 8pm EST!
-
 Prompt:
 Make a web app that starts as just a search bar (and maybe some web app
 branding). When someone types in a query and submits it you should hit the Yelp
@@ -36,6 +30,4 @@ Notes: This prompt is very vague and open ended by design. Think about it. You
    of your code and send it as an attachment.
  * You may use an html template if you want. If you do, send us the raw
    template as well.
- * If you have any questions during the interviewemailpav@stackfolio.comor call
-   Pav at 301-613-2697.
 

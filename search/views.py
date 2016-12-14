@@ -51,6 +51,7 @@ def search_yelp(input):
 
     client = Client(auth)
     response = client.search('Atlanta', **params)
+    print json.dumps(response, default=lambda o: o.__dict__, indent=2)
 
     for a in response.businesses:
         if a.image_url is None:
